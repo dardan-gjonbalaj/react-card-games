@@ -9,6 +9,9 @@ export default function Nav() {
           <Link href="/blackjack">
             <a>Blackjack</a>
           </Link>
+          <Link href="/texasholdem">
+            <a>Texas Holdem</a>
+          </Link>
         </li>
       </ul>
     </div>

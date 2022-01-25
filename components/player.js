@@ -58,3 +58,22 @@ export function DealerHand(props) {
     </div>
   );
 }
+
+export function PokerHand(props) {
+  console.log(props);
+  return (
+    <div>
+      <div className="playingCards">
+        <ul className="hand">
+          {props.player.hand.map((card) => {
+            return (
+              <li key={`${card.rank}-${card.suit}`}>
+                <PlayingCards hand={card} isFlipped={true} />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}
