@@ -3,9 +3,9 @@ import Blackjack from "../utils/games/blackjack";
 import React, { useEffect, useState } from "react";
 
 export function Player(props) {
-  if (props.player.hand.length === 0) {
-    return <div>{props.player.name}</div>;
-  }
+  // if (props.player.hand.length === 0) {
+  //   return <div>{props.player.name}</div>;
+  // }
 
   return (
     <div className={props.player.name}>
@@ -60,20 +60,12 @@ export function DealerHand(props) {
 }
 
 export function PokerHand(props) {
-  console.log(props);
+  {
+    console.log(props);
+  }
   return (
-    <div>
-      <div className="playingCards">
-        <ul className="hand">
-          {props.player.hand.map((card) => {
-            return (
-              <li key={`${card.rank}-${card.suit}`}>
-                <PlayingCards hand={card} isFlipped={true} />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+    <div key={`${props.card.rank}-${props.card.suit}`}>
+      <PlayingCards hand={props.card} isFlipped={props.flip} />
     </div>
   );
 }

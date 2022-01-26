@@ -1,4 +1,5 @@
-//import "../styles/cards.css";
+import "../styles/cards.css";
+
 import Nav from "./nav";
 
 function MyApp({ Component, pageProps }) {

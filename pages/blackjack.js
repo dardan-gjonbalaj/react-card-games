@@ -28,18 +28,18 @@ export default function Bjack() {
     }
   };
 
-  useEffect(() => {
-    console.log("\n\n******current state*******");
-    console.log("blackjack", blackjack);
-    console.log("cards", cards);
-    console.log("players", players);
-    console.log("dealt", dealt);
-    console.log("name", name);
-    console.log("count", count);
-    console.log("Active Player", activePlayer);
-    console.log("dealer", dealer);
-    console.log("*************************\n\n");
-  });
+  // useEffect(() => {
+  //   console.log("\n\n******current state*******");
+  //   console.log("blackjack", blackjack);
+  //   console.log("cards", cards);
+  //   console.log("players", players);
+  //   console.log("dealt", dealt);
+  //   console.log("name", name);
+  //   console.log("count", count);
+  //   console.log("Active Player", activePlayer);
+  //   console.log("dealer", dealer);
+  //   console.log("*************************\n\n");
+  // });
 
   useEffect(() => {
     setCards(blackjack.deck.cards);
