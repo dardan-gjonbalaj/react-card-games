@@ -60,9 +60,9 @@ export default function TexasHoldEm() {
         <input type="submit" value="Submit" />
       </form>
       <button onClick={deal}>Deal</button>
-      <div className="table">
+      <div className="table" style={{ padding: "2rem 10vw 2rem 10vw" }}>
         {/* {<PokerHand card={table} />} */}
-        <div className="playingCards">
+        <div className="playingCards" style={{ display: "flex" }}>
           {table.map((c) => {
             return <PokerHand card={c} />;
           })}
