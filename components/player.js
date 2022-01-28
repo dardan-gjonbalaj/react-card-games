@@ -59,13 +59,31 @@ export function DealerHand(props) {
   );
 }
 
-export function PokerHand(props) {
+export function PokerTable(props) {
   {
     console.log(props);
   }
   return (
     <div key={`${props.card.rank}-${props.card.suit}`}>
-      <PlayingCards hand={props.card} isFlipped={props.flip} />
+      <PlayingCards hand={props.card} />
     </div>
+  );
+}
+
+export function PokerHand(props) {
+  {
+    console.log(props);
+  }
+  return (
+    <ul className="hand">
+      {props.cards.map((card) => {
+        console.log(card);
+        return (
+          <li key={`${card.rank}-${card.suit}`}>
+            <PlayingCards hand={card} isFlipped={!props.flip} />
+          </li>
+        );
+      })}
+    </ul>
   );
 }
