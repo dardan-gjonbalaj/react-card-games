@@ -53,6 +53,9 @@ export default function TexasHoldEm() {
   useEffect(() => {
     console.log(newGame);
     if (newGame) {
+      players.map((player) => {
+        player.hand = [];
+      });
       setTable([]);
       setTurn(0);
       setNewGame(!newGame);
