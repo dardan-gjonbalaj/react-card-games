@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import PlayingCards from "../components/card";
-import { PokerHand, PokerTable } from "../components/player";
-import Dealer from "../utils/dealer";
-import Deck from "../utils/deck";
-import Player from "../utils/player";
+import React, { useState, useEffect } from 'react';
+import PlayingCards from '../components/card';
+import { PokerHand, PokerTable } from '../components/player';
+import Dealer from '../utils/dealer';
+import Deck from '../utils/deck';
+import Player from '../utils/player';
 
 export default function TexasHoldEm() {
   const [cards, setCards] = useState();
   const [table, setTable] = useState([]);
   const [flip, setFlip] = useState(true);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [players, setPlayers] = useState([]);
   const [turn, setTurn] = useState(0);
   const [play, setPlay] = useState(false);
@@ -63,14 +63,14 @@ export default function TexasHoldEm() {
   }, [newGame, turn]);
 
   useEffect(() => {
-    console.log("\n\n******current state*******");
-    console.log("cards", cards);
-    console.log("table", table);
-    console.log("players", players);
-    console.log("turn", turn);
-    console.log("play", play);
-    console.log("New Game", newGame);
-    console.log("*************************\n\n");
+    console.log('\n\n******current state*******');
+    console.log('cards', cards);
+    console.log('table', table);
+    console.log('players', players);
+    console.log('turn', turn);
+    console.log('play', play);
+    console.log('New Game', newGame);
+    console.log('*************************\n\n');
   });
 
   const handleSubmit = (event) => {
@@ -83,7 +83,7 @@ export default function TexasHoldEm() {
 
       setPlayers([...players, p1]);
 
-      setName("");
+      setName('');
     } catch (e) {
       alert("Couldn't add player");
     }
@@ -114,12 +114,18 @@ export default function TexasHoldEm() {
       <button onClick={() => setPlay(!play)} disabled={turn == 4}>
         Deal
       </button>
-      <button onClick={() => setNewGame(!newGame)} disabled={turn != 4}>
+      <button
+        onClick={() => setNewGame(!newGame)}
+        disabled={turn != 4}
+      >
         New Game
       </button>
-      <div className="table" style={{ padding: "2rem 10vw 2rem 10vw" }}>
+      <div
+        className="table"
+        style={{ padding: '2rem 10vw 2rem 10vw' }}
+      >
         {/* {<PokerHand card={table} />} */}
-        <div className="playingCards" style={{ display: "flex" }}>
+        <div className="playingCards" style={{ display: 'flex' }}>
           {table.map((c, index) => {
             return <PokerTable key={index} card={c} />;
           })}
@@ -127,14 +133,19 @@ export default function TexasHoldEm() {
       </div>
       <div
         className="players"
-        style={{ display: "flex", flexDirection: "column" }}
+        style={{ display: 'flex', flexDirection: 'column' }}
       >
         {players.map((player, index) => {
           return (
             <div className={`${player.name}`}>
               {player.name}
               <div className="playingCards">
-                <PokerHand key={index} cards={player.hand} flip={flip} />
+                <PokerHand
+                  key={index}
+                  cards={player.hand}
+                  flip={flip}
+                />
+                {player.money}
               </div>
             </div>
           );

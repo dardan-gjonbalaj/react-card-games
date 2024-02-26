@@ -1,6 +1,6 @@
-import PlayingCards from "../components/card";
-import Blackjack from "../utils/games/blackjack";
-import React, { useEffect, useState } from "react";
+import PlayingCards from '../components/card';
+import Blackjack from '../utils/games/blackjack';
+import React, { useEffect, useState } from 'react';
 
 export function Player(props) {
   // if (props.player.hand.length === 0) {
@@ -9,7 +9,8 @@ export function Player(props) {
 
   return (
     <div className={props.player.name}>
-      {props.name}
+      {console.log(props)}
+      {props.player.name}
       {console.log(props.isActive, props.player.name)}
       <div className="playingCards">
         <ul className="hand">
@@ -25,10 +26,20 @@ export function Player(props) {
       {props.player.value}
       {props.player.bust && <div>Busted!!</div>}
       {props.player.bj && <div>Blackjack!!</div>}
-      <button onClick={props.hit} disabled={!props.isActive}>
+      <button
+        onClick={props.hit}
+        disabled={
+          !props.isActive || props.player.bj || props.player.bj
+        }
+      >
         Hit
       </button>
-      <button onClick={props.stand} disabled={!props.isActive}>
+      <button
+        onClick={props.stand}
+        disabled={
+          !props.isActive || props.player.bj || props.player.bj
+        }
+      >
         Stand
       </button>
     </div>

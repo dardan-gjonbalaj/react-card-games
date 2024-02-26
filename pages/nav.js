@@ -1,17 +1,15 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
 export default function Nav() {
   return (
     <div>
       <ul>
         <li>
-          <Link href="/blackjack">
-            <a>Blackjack</a>
-          </Link>
-          <Link href="/texasholdem">
-            <a>Texas Holdem</a>
-          </Link>
+          <Link href="/blackjack">Blackjack</Link>
+        </li>
+        <li>
+          <Link href="/texasholdem">Texas Holdem</Link>
         </li>
       </ul>
     </div>

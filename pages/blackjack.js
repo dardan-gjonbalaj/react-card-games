@@ -1,8 +1,8 @@
-import PlayingCards from "../components/card";
-import Blackjack from "../utils/games/blackjack";
-import { Player, DealerHand } from "../components/player";
-import React, { useState, useEffect } from "react";
-import Dealer from "../utils/dealer";
+import PlayingCards from '../components/card';
+import Blackjack from '../utils/games/blackjack';
+import { Player, DealerHand } from '../components/player';
+import React, { useState, useEffect } from 'react';
+import Dealer from '../utils/dealer';
 
 const blackjack = new Blackjack();
 
@@ -12,7 +12,7 @@ export default function Bjack() {
   const [dealer, setDealer] = useState(blackjack.dealer);
   const [activePlayer, setActivePlayer] = useState(null);
   const [dealt, setDealt] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [count, setCount] = useState(0);
 
   const dealerPlay = () => {
@@ -21,10 +21,10 @@ export default function Bjack() {
     }
     if (blackjack.dealer.value < 17) {
       blackjack.hit(dealer);
-      console.log(dealer, "before hit");
+      console.log(dealer, 'before hit');
       setDealer(dealer);
-      console.log("hit");
-      console.log(dealer, "after hit");
+      console.log('hit');
+      console.log(dealer, 'after hit');
     }
   };
 
@@ -73,11 +73,11 @@ export default function Bjack() {
       //setplayers: (players) => [...players, blackjack.getPlayer(name)];
       console.log(players);
 
-      setName("");
+      setName('');
     } catch (e) {
-      alert("This player already exists!");
+      alert('This player already exists!');
     }
-    console.log(blackjack, "blackjack print");
+    console.log(blackjack, 'blackjack print');
   };
 
   const deal = () => {
@@ -86,13 +86,30 @@ export default function Bjack() {
   };
 
   const hit = () => {
-    //blackjack.hit(activePlayer);
-    blackjack.hit(activePlayer);
-    setPlayers([...players]);
+    console.log(blackjack.checkBust(activePlayer), 'XDDD');
+    if (
+      !!blackjack.check21(activePlayer) ||
+      !!blackjack.checkBust(activePlayer)
+    ) {
+      const newCount = count - 1;
+      setCount(newCount);
+      setActivePlayer(players[newCount - 1]);
+    } else {
+      blackjack.hit(activePlayer);
+      setPlayers([...players]);
+    }
+    if (
+      !!blackjack.check21(activePlayer) ||
+      !!blackjack.checkBust(activePlayer)
+    ) {
+      const newCount = count - 1;
+      setCount(newCount);
+      setActivePlayer(players[newCount - 1]);
+    }
   };
 
   const stand = () => {
-    console.log("player ", activePlayer.name, " choose to stand");
+    console.log('player ', activePlayer.name, ' choose to stand');
     // setPlayers([...players]);
     const newCount = count - 1;
     setCount(newCount);
@@ -114,10 +131,12 @@ export default function Bjack() {
       </form>
       <div className="Dealer">
         <DealerHand
-          key={"Dealer"}
+          key={'Dealer'}
           player={dealer}
           hand={dealer.hand}
-          isActive={activePlayer ? dealer.name === activePlayer.name : false}
+          isActive={
+            activePlayer ? dealer.name === activePlayer.name : false
+          }
         />
       </div>
       <div className="players">
@@ -130,7 +149,9 @@ export default function Bjack() {
               hit={hit}
               stand={stand}
               isActive={
-                activePlayer ? activePlayer.name === player.name : false
+                activePlayer
+                  ? activePlayer.name === player.name
+                  : false
               }
             />
           );

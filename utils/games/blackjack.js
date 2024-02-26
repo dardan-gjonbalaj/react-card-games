@@ -1,7 +1,7 @@
 // import { check } from "prettier";
-import Player from "../player";
-import Deck from "../deck";
-import Dealer from "../dealer";
+import Player from '../player';
+import Deck from '../deck';
+import Dealer from '../dealer';
 
 class Blackjack {
   constructor() {
@@ -15,7 +15,7 @@ class Blackjack {
         return player.name === name;
       })
     ) {
-      throw Error("Player already exists. Change your name NOW!");
+      throw Error('Player already exists. Change your name NOW!');
     }
     this.players.push(new Player(name));
   };
@@ -32,7 +32,7 @@ class Blackjack {
         return player.name === name;
       })
     ) {
-      throw Error("Player does not exist");
+      throw Error('Player does not exist');
     }
     this.players = this.players.filter((player) => {
       return player.name !== name;
@@ -66,7 +66,7 @@ class Blackjack {
     player.hand.forEach((card) => {
       if (card.rank === 1 || card.rank > 10) {
         let faceCard = this.isFaceCard(card.rank);
-        if (faceCard === "A") {
+        if (faceCard === 'A') {
           if (11 + sum <= 21) {
             console.log(faceCard);
             sum += 11;
@@ -84,21 +84,21 @@ class Blackjack {
   }
   isFaceCard(card) {
     return card === 1
-      ? "A"
+      ? 'A'
       : card === 11
-      ? "J"
+      ? 'J'
       : card === 12
-      ? "Q"
+      ? 'Q'
       : card === 13
-      ? "K"
+      ? 'K'
       : card;
   }
 
   check21(player) {
-    player.value === 21 ? (player.bj = true) : false;
+    return player.value === 21 ? (player.bj = true) : false;
   }
   checkBust(player) {
-    player.value > 21 ? (player.bust = true) : false;
+    return player.value > 21 ? (player.bust = true) : false;
   }
   hit(player) {
     console.log(player);
@@ -107,7 +107,7 @@ class Blackjack {
     player.value = this.getValue(player);
     //check if player busts on hit, if not they can choose to stand or hit
     if (this.check21(player)) {
-      console.log("BLACKJACK!");
+      console.log('BLACKJACK!');
       player.bj = true;
     }
     if (this.checkBust(player)) {
